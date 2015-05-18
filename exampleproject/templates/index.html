@@ -1,13 +1,31 @@
 {% load molder_tags %}
 
-<!DOCTYPE html>
 <html>
 <head>
     <title>Molder example page</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 </head>
 <body>
-    {% render_field form_one.char_field %}
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Django Molder</a>
+            <p class="navbar-text">example page</p>
+        </div>
+    </nav>
 
-    {% render_field form_one.radio_field %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form">
+                    {% render_field form_one.char_field %}
+                    {% render_field form_one.radio_field %}
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

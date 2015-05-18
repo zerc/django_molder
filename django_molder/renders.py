@@ -74,7 +74,7 @@ class BaseFieldRender(object):
                        forms.RadioSelect)):
             return ' accountFormCol__checkbox'
 
-        return ' accountFormCol__text-input'
+        return ' form-control'
 
     @property
     def template(self):
