@@ -1,27 +1,10 @@
-{% load molder_tags %}
+{% extends 'molder/base.html' %}
 
-{% if field.widget.choices %}
-    {# Multiple select #}
-    {% if show_label %}
-        <span class="accountFormCol__label"> {{ bound_field.label }} </span>
-    {% endif %}
-    {% for value, label, checked in bound_field|iter_choices %}
-        <label class="accountFormCol__checkbox-wrapper _block-level">
-            <input type="checkbox" name="{{ bound_field.name }}" value="{{ value }}"{% if checked %}checked="checked"{% endif %} {{ renderer.widget_attrs_as_html }} />
-            <span class="accountFormCol__checkbox-label _tick">{{ label }}</span>
+{% block field_place %}
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" name="{{ bound_field.html_name }}" id="{{ bound_field.auto_id }}" value="True"{% if bound_field.value %} checked="checked"{% endif %} {{ renderer.widget_attrs_as_html }} />
+                {{ bound_field.label }}
         </label>
-    {% endfor %}
-{% else %}
-    {# One field #}
-    <label class="accountFormCol__checkbox-wrapper">
-        <input type="checkbox" name="{{ bound_field.html_name }}" id="{{ bound_field.auto_id }}" value="True"{% if bound_field.value %} checked="checked"{% endif %} {{ renderer.widget_attrs_as_html }} />
-        <span class="accountFormCol__checkbox-label _tick">{{ bound_field.label }}</span>
-    </label>
-{% endif %}
-
-{% if bound_field.errors %}
-    <span class="accountFormCol__validation-message">
-        {{ bound_field.errors|safe }}
-    </span>
-{% endif %}
-
+    </div>
+{% endblock %}

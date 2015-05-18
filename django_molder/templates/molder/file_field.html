@@ -1,21 +1,13 @@
-{% load i18n %}
+{% extends 'molder/base.html' %}
 
-{% if bound_field.value and show_label %}
-    <p class="accountForm__para _small">
-        <a href="{{ bound_field.value.url }}" target="_blank">
-            {% trans 'file'|title %}
-        </a>
-    </p>
-{% endif %}
+{% block field_place %}
+    {% if bound_field.value and show_value %}
+        <p>
+            <a href="{{ bound_field.value.url }}" target="_blank">
+                {{ bound_field.value.name }}
+            </a>
+        </p>
+    {% endif %}
 
-{{ bound_field }}
-
-{% if bound_field.errors %}
-    <span class="accountFormCol__validation-message">
-        {{ bound_field.errors|safe }}
-    </span>
-{% endif %}
-
-{% if bound_field.help_text and show_help and not help_on_top %}
-    <span class="accountFormCol__descr">{{ bound_field.help_text|safe }}</span>
-{% endif %}
+    {{ bound_field }}
+{% endblock %}

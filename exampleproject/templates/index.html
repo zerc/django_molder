@@ -19,12 +19,17 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
-                <form class="form">
+            <form class="form">
+                <div class="col-md-6">
                     {% render_field form_one.char_field %}
                     {% render_field form_one.radio_field %}
-                </form>
-            </div>
+                    {% render_field form_one.file_field %}
+                </div>
+                <div class="col-md-6">
+                    {% render_field form_one.multiple_select_field help_on_top=True %}
+                    {% render_field form_one.checkbox_field %}
+                </div>
+            </form>
         </div>
     </div>
 </body>

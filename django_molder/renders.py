@@ -64,6 +64,7 @@ class BaseFieldRender(object):
             a_name = a_name.replace('data_', 'data-')
             self.widget.attrs[a_name] = a_value
 
+    # TODO: move it into settings
     @property
     def default_class_for_widget(self):
         if isinstance(self.widget, forms.FileInput):
@@ -84,8 +85,10 @@ class BaseFieldRender(object):
         if isinstance(self.widget, forms.RadioSelect):
             return 'molder/radio_field.html'
 
-        if isinstance(self.widget,
-                      (forms.CheckboxInput, forms.CheckboxSelectMultiple)):
+        if isinstance(self.widget, forms.CheckboxSelectMultiple):
+            return 'molder/multiple_checkbox_field.html'
+
+        if isinstance(self.widget, forms.CheckboxInput):
             return 'molder/checkbox_field.html'
 
         if isinstance(self.widget, forms.FileInput):
