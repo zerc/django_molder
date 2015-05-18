@@ -1,0 +1,12 @@
+{% load molder_tags %}
+
+{% if show_label %}
+    <span class="accountFormCol__label"> {{ bound_field.label }} </span>
+{% endif %}
+
+{% for value, label, checked in bound_field|iter_choices %}
+    <label class="accountFormCol__checkbox-wrapper {{ label_class }}">
+        <input type="radio" {{ renderer.widget_attrs_as_html }} name="{{ bound_field.name }}" value="{{ value }}"{% if checked %}checked="checked"{% endif %} />
+        <span class="accountFormCol__checkbox-label">{{ label }}</span>
+    </label>
+{% endfor %}

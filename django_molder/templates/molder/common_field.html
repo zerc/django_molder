@@ -1,0 +1,30 @@
+{% if not hide_form_col %}
+    <div class="accountFormCol{% if label_class %} {{ label_class }}{% endif %}">
+        {% if show_label %}
+            <label class="accountFormCol__label" for="{{ bound_field.auto_id }}">
+                {{ bound_field.label }}
+                {% if required %}*{% endif %}
+            </label>
+        {% endif %}
+{% endif %}
+
+{% if help_on_top and bound_field.help_text and show_help %}
+    <span class="accountFormCol__label">
+        {{ bound_field.help_text }}
+        {% if not show_label and required %}*{% endif %}
+    </span>
+{% endif %}
+
+{{ bound_field }}
+
+{% if bound_field.errors %}
+    <span class="accountFormCol__validation-message">{{ bound_field.errors|safe }}</span>
+{% endif %}
+
+{% if bound_field.help_text and show_help and not help_on_top %}
+    <span class="accountFormCol__descr">{{ bound_field.help_text|safe }}</span>
+{% endif %}
+
+{% if not hide_form_col %}
+    </div>
+{% endif %}
