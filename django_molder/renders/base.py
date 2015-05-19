@@ -10,6 +10,8 @@ from django.utils.translation import ugettext as _
 
 import six
 
+from django_molder import config
+
 
 class BaseFieldRender(object):
     """ Base field render class
@@ -44,10 +46,7 @@ class BaseFieldRender(object):
         return render_to_string(self.template, context)
 
     def patch_widget_attrs(self):
-        self.widget.attrs.setdefault('class', '')
-        self.widget.attrs['class'] += self.default_class_for_widget
-
-        # TODO: make hooks for differenrs field classes
+        self.widget.attrs['class'] = self.default_class_for_widget
 
         specified_class = self.kwargs.pop('class', None)
         if specified_class:
@@ -62,18 +61,10 @@ class BaseFieldRender(object):
             a_name = a_name.replace('data_', 'data-')
             self.widget.attrs[a_name] = a_value
 
-    # TODO: move it into settings
-    @property
+    @cached_property
     def default_class_for_widget(self):
-        if isinstance(self.widget, forms.FileInput):
-            return ' accountFormCol__text-fileinput'
-
-        if isinstance(self.widget,
-                      (forms.CheckboxInput, forms.CheckboxSelectMultiple,
-                       forms.RadioSelect)):
-            return ' accountFormCol__checkbox'
-
-        return ' form-control'
+        mapping = config.MOLDER_DEFAULT_CLASSES_FOR_WIDGETS
+        return mapping.get(self.widget.__class__, mapping[None])
 
     @property
     def template(self):
