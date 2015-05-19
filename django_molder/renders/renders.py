@@ -1,21 +1,21 @@
 # coding: utf-8
-from .base import BaseFieldRender, BaseFormRender
+from .base import BaseFieldRenderer, BaseFormRenderer
 
-__ALL__ = ('FieldRender', 'FormRender', 'MessageRender')
+__ALL__ = ('FieldRenderer', 'FormRenderer', 'MessageRenderer')
 
 
-class FieldRender(BaseFieldRender):
-    """ Field render
+class FieldRenderer(BaseFieldRenderer):
+    """ Field renderer
     """
 
 
-class FormRender(BaseFormRender):
-    """ Form render
+class FormRenderer(BaseFormRenderer):
+    """ Form renderer
     """
 
 
-class MessageRender(object):
-    """ Render for django messages framework.
+class MessageRenderer(object):
+    """ Renderer for django messages framework.
     """
     def __init__(self, request, template=None, **kwargs):
         self.request = request

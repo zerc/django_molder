@@ -13,13 +13,12 @@ import six
 from django_molder import config
 
 
-class BaseFieldRender(object):
-    """ Base field render class
+class BaseFieldRenderer(object):
+    """ Base field renderer class
     """
-    def __init__(self, bound_field, label_class='', show_help=True,
+    def __init__(self, bound_field, show_help=True,
                  show_label=True, help_on_top=False,
-                 template=None, hide_form_col=False,
-                 required=None,
+                 template=None, required=None,
                  **kwargs):
         self.bound_field = bound_field
         self.field = bound_field.field
@@ -29,9 +28,8 @@ class BaseFieldRender(object):
 
         self.template = template
         self.template_args = dict(
-            label_class=label_class, show_help=show_help,
+            show_help=show_help,
             show_label=show_label, help_on_top=help_on_top,
-            hide_form_col=hide_form_col,
             required=[required, self.field.required][required is None]
         )
 
@@ -95,8 +93,8 @@ class BaseFieldRender(object):
                                    self.widget.attrs.items()))
 
 
-class BaseFormRender(object):
-    """ Base form render class
+class BaseFormRenderer(object):
+    """ Base form renderer class
     """
     def __init__(self, form, form_template=None, **kwargs):
         if not isinstance(form, forms.BaseForm):

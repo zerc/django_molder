@@ -5,7 +5,7 @@ from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import force_text
 
-from django_molder.renders import FieldRender, FormRender, MessageRender
+from django_molder.renders import FieldRenderer, FormRenderer, MessageRenderer
 
 
 register = template.Library()
@@ -13,18 +13,18 @@ register = template.Library()
 
 @register.simple_tag(takes_context=True)
 def render_field(context, bound_field, **extra):
-    return FieldRender(bound_field, **extra).render()
+    return FieldRenderer(bound_field, **extra).render()
 
 
 @register.simple_tag(takes_context=True)
 def render_form(context, form, **extra):
-    return FormRender(form, **extra).render()
+    return FormRenderer(form, **extra).render()
 
 
 @register.simple_tag(takes_context=True)
 def render_messages(context, **extra):
     request = context['request']
-    return MessageRender(request, **extra).render()
+    return MessageRenderer(request, **extra).render()
 
 
 @register.filter
