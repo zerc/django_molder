@@ -15,8 +15,8 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read().replace('.. :changelog:', '')
 
 requirements = [
-    'Django==1.7.7',
-    'six==1.9.0',
+    'Django>=1.5.1',
+    'six>=1.9.0',
 ]
 
 test_requirements = [
@@ -33,7 +33,14 @@ setup(
     url='https://github.com/zerc/django_molder',
     packages=[
         'django_molder',
+        'django_molder/renderers',
+        'django_molder/templatetags'
     ],
+    package_data={
+        'django_molder': [
+            'templates/django_molder/*',
+        ],
+    },
     package_dir={'django_molder':
                  'django_molder'},
     include_package_data=True,
