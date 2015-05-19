@@ -5,7 +5,8 @@ from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import force_text
 
-from django_molder.renders import FieldRenderer, FormRenderer, MessageRenderer
+from django_molder.renderers import (FieldRenderer, FormRenderer,
+                                     MessageRenderer)
 
 
 register = template.Library()
