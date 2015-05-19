@@ -25,7 +25,7 @@ test_requirements = [
 
 setup(
     name='django_molder',
-    version='0.1.0',
+    version='0.1.0a',
     description="Another one painless way to working with forms and they fields",
     long_description=readme + '\n\n' + history,
     author="Vladimir Savin",
