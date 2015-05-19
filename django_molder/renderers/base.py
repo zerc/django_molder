@@ -70,18 +70,18 @@ class BaseFieldRenderer(object):
             return self._template
 
         if isinstance(self.widget, forms.RadioSelect):
-            return 'molder/radio_field.html'
+            return 'django_molder/radio_field.html'
 
         if isinstance(self.widget, forms.CheckboxSelectMultiple):
-            return 'molder/multiple_checkbox_field.html'
+            return 'django_molder/multiple_checkbox_field.html'
 
         if isinstance(self.widget, forms.CheckboxInput):
-            return 'molder/checkbox_field.html'
+            return 'django_molder/checkbox_field.html'
 
         if isinstance(self.widget, forms.FileInput):
-            return 'molder/file_field.html'
+            return 'django_molder/file_field.html'
 
-        return 'molder/common_field.html'
+        return 'django_molder/common_field.html'
 
     @template.setter
     def template(self, value):
@@ -117,7 +117,7 @@ class BaseFormRenderer(object):
     def template(self):
         if self._template:
             return self._template
-        return 'molder/common_form.html'
+        return 'django_molder/common_form.html'
 
     @template.setter
     def template(self, value):
