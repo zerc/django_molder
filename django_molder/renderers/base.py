@@ -20,6 +20,11 @@ class BaseFieldRenderer(object):
                  show_label=True, help_on_top=False,
                  template=None, required=None,
                  **kwargs):
+
+        if not isinstance(bound_field, forms.forms.BoundField):
+            msg = u'First argument must be BoundField of BoundField'
+            raise ValueError(msg)
+
         self.bound_field = bound_field
         self.field = bound_field.field
         self.widget = bound_field.field.widget
@@ -96,9 +101,14 @@ class BaseFieldRenderer(object):
 class BaseFormRenderer(object):
     """ Base form renderer class
     """
+    field_render_cls = None
+
     def __init__(self, form, form_template=None, **kwargs):
         if not isinstance(form, forms.BaseForm):
             raise ValueError(u'Invalid form class')
+
+        if self.field_render_cls is None:
+            raise NotImplementedError(u'Invalid `field_render_cls` property')
 
         self.form = form
         self.kwargs = kwargs
@@ -111,7 +121,7 @@ class BaseFormRenderer(object):
     @property
     def rendered_fields(self):
         for bound_field in self.form:
-            yield FieldRender(bound_field, **self.kwargs).render()
+            yield self.field_render_cls(bound_field, **self.kwargs).render()
 
     @property
     def template(self):

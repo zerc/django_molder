@@ -12,6 +12,7 @@ class FieldRenderer(BaseFieldRenderer):
 class FormRenderer(BaseFormRenderer):
     """ Form renderer
     """
+    field_render_cls = FieldRenderer
 
 
 class MessageRenderer(object):
