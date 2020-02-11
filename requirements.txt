@@ -1,4 +1,4 @@
 wheel==0.23.0
-Django==1.7.7
+Django==1.11.28
 six==1.9.0
 tox==2.0.2
