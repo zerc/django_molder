@@ -10,15 +10,13 @@ Django Molder
     :alt: Build status
 
 
-Another one painless way to working with forms and they fields
-
 * Free software: BSD license
 
 Features
 --------
 
-It provides multiple tags for rendering form fields in a custom template.
-Bootstrap3 classes and html as default but you can simple override this for your specification -
+It provides multiple tags to render Django form fields in a custom template.
+Bootstrap3 classes and html as default but you can simply override extend this to fit your needs -
 just make ``molder`` directory in your templates folder.
 
 Example:
@@ -68,10 +66,10 @@ Special kwargs:
 render_form
 ===========
 
-Gets form as first arg. Iterates through the fields and render them. Extra kwargs passed in each field.
+Gets form as its first arg. Iterates through the fields and renders them. Extra kwargs passed to each field.
 
 
 render_messages
 ===============
 
-Just render the messages (django.contrib.messages)
+Just renders the messages (django.contrib.messages)
